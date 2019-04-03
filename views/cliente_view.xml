@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	 <data>
+        <!-- Creamos la vista de formulario -->
+	 	<record id="view_mfh_cliente_form_id" model="ir.ui.view">
+	 		<field name="name">sis_cliente_form</field>
+            <!-- Nombre del modelo -->
+	 		<field name="model">sis.cliente</field>
+            <field name="type">form</field>
+            	<field name="arch" type="xml">
+                   <form string="cliente">
+                    <!-- Usamos group para mostrar los label de modelo -->
+                       <group>
+                           <field name="nombre"/>
+                           <field name="ciudad_id"/>
+                           <field name="direccion"/>
+                           <field name="contacto"/>
+                           <field name="Telefono"/>
+                           <field name="RTN"/>
+                       </group>
+                   </form>                             	
+                </field>
+	    </record>
+
+        <!-- Creamos la vista de Arbol -->
+        <record id="view_sis_cliente_tree_id" model="ir.ui.view">
+            <field name="name">sis_cliente_tree</field>
+            <!-- Nombre del modelo -->
+            <field name="model">sis.cliente</field>
+            <field name="type">tree</field>
+                <field name="arch" type="xml">
+                   <tree string="cliente">
+                           <field name="nombre"/>
+                           <field name="ciudad_id"/>
+                           <field name="direccion"/>
+                           <field name="contacto"/>
+                           <field name="Telefono"/>
+                           <field name="RTN"/>
+                   </tree>                              
+                </field>
+        </record>
+
+
+        <!--  Definimos los eventos -->
+        <record id="action_sis_cliente" model="ir.actions.act_window">
+            <field name="name">sis cliente</field>
+            <field name="res_model">sis.cliente</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--  Declaramos los menu -->
+        <menuitem id="menu_sis" name="Cliente" sequence="10"/>
+        <menuitem id="menu_sis_menu" name="Menu" sequence="10" parent="menu_sis"/>
+        <menuitem id="menu_sis_menu_cliente" name="Cliente" sequence="10" parent="menu_sis_menu" action="action_sis_cliente"/>
+
+     </data>
+</openerp>
